@@ -1,22 +1,22 @@
 LAB GRE OPENVSWITCH
 
-I.Mục tiêu bài lab :
+## I.Mục tiêu bài lab :
 
 - Hiểu hoạt động của giao thức GRE.
 - Máy vm trong Host1 có thế ping đến được máy vm trong Host2.
 
-II.Mô hình thực hiện :
+## II.Mô hình thực hiện :
 
 <img src="">
 
 
-III. Kịch bản bài Lab :
+## III. Kịch bản bài Lab :
  
   - Cài đặt Open vSwitch trên máy ảo VMWare Workstation.
   - Cài KVM trên cả hai máy và tạo mỗi máy 1 máy ảo.
   - Cấu hình GRE trên 2 máy để 2 VM có thế ping được đến nhau.
 
-IV. Quá trình thực hiện:
+## IV. Quá trình thực hiện:
 
 1. Trên  HOST1 :
 - Cài  đặt gói KVM :
