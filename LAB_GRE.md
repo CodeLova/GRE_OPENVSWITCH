@@ -19,6 +19,7 @@ LAB GRE OPENVSWITCH
 ## IV. Quá trình thực hiện:
 
 1. Trên  HOST1 :
+
 - Cài  đặt gói KVM :
 ```
 sudo apt-get install -y kvm libvirt-bin pm-utils
@@ -64,6 +65,7 @@ kvm -m 512 -net nic,macaddr=12:42:52:CC:CC:15 -net tap,script=/etc/ovs-ifup cirr
 ```
  ifconfig eth0 1.1.1.10 netmask 255.255.255.0
 ```
+
 2. Trên HOST2:
 
 - Cài  đặt gói KVM :
@@ -112,7 +114,7 @@ kvm -m 512 -net nic,macaddr=12:42:52:CC:CC:15 -net tap,script=/etc/ovs-ifup cirr
  ifconfig eth0 1.1.1.12 netmask 255.255.255.0
 ```
 
-V. Test kết quả:
+## V. Test kết quả:
 
 
 
