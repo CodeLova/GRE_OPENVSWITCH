@@ -39,7 +39,7 @@ Hai byte tiếp theo là phần Protocol Type chỉ ra giao thức lớp 3 của
 Khi gói tin đi qua tunnel nó sẽ được thêm GRE header như trên và sau khi tới đầu bên kia của kênh truyền, gói tin sẽ được loại bỏ GRE header để trả lại gói tin ban đầu.
 
 
-#### 3. GRE trong Openvswitch :
+
 
 
 
