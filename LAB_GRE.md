@@ -117,7 +117,7 @@ kvm -m 512 -net nic,macaddr=12:42:52:CC:CC:15 -net tap,script=/etc/ovs-ifup cirr
 ## V. Test kết quả:
 
 - Từ VM1 trên HOST1 -> VM2 trên HOST2
-- 
+ 
 
 
 
