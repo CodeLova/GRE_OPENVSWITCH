@@ -21,7 +21,9 @@
   
   - Ngoài ra GRE còn có thể tùy chọn thêm 12 byte mở rộng để cung cấp tính năng tin cậy như: checksum, key chứng thực, sequence number.
 
-<img src="http://i.imgur.com/tsQfCyN.jpg">
+ Cấu trúc một gói tin ip có thêm GRE header
+
+ <img src="http://i.imgur.com/tsQfCyN.jpg">
 
 
 Hai byte đầu tiên trong phần GRE header là GRE flag 2-byte. Phần bày chứa các cờ dùng để chỉ định những tính năng tùy chọn của GRE : 
