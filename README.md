@@ -9,6 +9,7 @@
 - Mỗi lần gói tin GRE đi đến đích, lần lượt các header ngoài cùng sẽ được gỡ bỏ cho đến khi gói tin ban đầu được mở ra.
 
 2. Cơ chế hoạt động của GRE:
+
  - Để tạo ra các kênh truyền, GRE cũng thực hiện việc đóng gói gói tin tương tự như giao thức IPSec hoạt động ở Tunnel mode.
  - Trong quá trình đóng gói, GRE sẽ thêm các header mới vào gói tin, và header mới này cung cấp các thông số cần thiết dùng để truyền các gói tin thông qua môi trường trung gian.
 
@@ -36,10 +37,7 @@ Hai byte tiếp theo là phần Protocol Type chỉ ra giao thức lớp 3 của
 Khi gói tin đi qua tunnel nó sẽ được thêm GRE header như trên và sau khi tới đầu bên kia của kênh truyền, gói tin sẽ được loại bỏ GRE header để trả lại gói tin ban đầu.
 
 
-3. Phân loại GRE:
-- GRE là giao thức có thể đóng gói bất kì gói tin nào của lớp network. GRE cung cấp khả năng có thể định tuyến giữa những mạng riêng (private network) thông qua môi trường Internet bằng cách sử dụng các địa chỉ IP đã được định tuyến.
-
-- GRE truyền thống là point-to-point, còn mGRE là sự mở rộng khái niệm này bằng việc cho phép một tunnel có thể đến được nhiều điểm đích, mGRE tunnel là thành phần cơ bản nhất trong DMVPN.
+3. GRE trong Openvswitch :
 
 
 
