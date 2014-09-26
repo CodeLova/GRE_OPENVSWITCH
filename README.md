@@ -1,6 +1,6 @@
 ## Giao thức GRE
 
-1. Gioi thieu ve giao thuc GRE :
+#### 1. Giới thiệu về giao thức GRE :
 
 - GRE – Generic Routing Encapsulation là giao thức được phát triển đầu tiên bởi Cisco, với mục đích chính tạo ra kênh truyền ảo (tunnel) để mang các giao thức lớp 3 thông qua mạng IP.
 
@@ -8,7 +8,7 @@
 
 - Mỗi lần gói tin GRE đi đến đích, lần lượt các header ngoài cùng sẽ được gỡ bỏ cho đến khi gói tin ban đầu được mở ra.
 
-2. Cơ chế hoạt động của GRE:
+#### 2. Cơ chế hoạt động của GRE:
 
  - Để tạo ra các kênh truyền, GRE cũng thực hiện việc đóng gói gói tin tương tự như giao thức IPSec hoạt động ở Tunnel mode.
  - Trong quá trình đóng gói, GRE sẽ thêm các header mới vào gói tin, và header mới này cung cấp các thông số cần thiết dùng để truyền các gói tin thông qua môi trường trung gian.
@@ -39,7 +39,7 @@ Hai byte tiếp theo là phần Protocol Type chỉ ra giao thức lớp 3 của
 Khi gói tin đi qua tunnel nó sẽ được thêm GRE header như trên và sau khi tới đầu bên kia của kênh truyền, gói tin sẽ được loại bỏ GRE header để trả lại gói tin ban đầu.
 
 
-3. GRE trong Openvswitch :
+#### 3. GRE trong Openvswitch :
 
 
 
