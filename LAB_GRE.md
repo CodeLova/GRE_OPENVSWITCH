@@ -24,23 +24,29 @@ LAB GRE OPENVSWITCH
 ```
 sudo apt-get install -y kvm libvirt-bin pm-utils
 ```
+- Mặc định kvm sẽ tạo ra một card virbr0. Để tắt ta sử dụng:
+```
+virsh net-destroy default
+virsh net-autostart --disable default
 
+aptitude purge ebtables
+```
 - Cài đặt gói Openvswitch :
 ```
 sudo apt-get install -y openvswitch-switch openvswitch-datapath-dkms
 ```
 - Tạo brigre br0,br1
 ```
-sudo ovs-vsctl add-br br0
-sudo ovs-vsctl add-br br0
+sudo ovs-vsctl add-br br-ex
+sudo ovs-vsctl add-br br-ex
 
 ```
-Thêm port eth0 vào br0
+Thêm port eth0 vào br-ex
 ```
-ovs-vsctl add-port br0 eth0
+ovs-vsctl add-port br-ex eth0
 ```
 
-- set ip cho br0 :
+- set ip cho br-ex :
 ```
 iconfig eth0 0
 ifconfig br0 172.16.69.40 netmask 255.255.255.0
@@ -51,11 +57,45 @@ route add default gw 172.16.69.1 dev br0
 ```
 iconfig br1 1.1.1.1 netmask 255.255.255.0
 ```
+- hoặc chỉnh file cấu hình /etc/network/interface 
+```
+auto br-ex
+iface br-ex inet static
+address 10.145.48.159
+netmask 255.255.255.0
+gateway 10.145.48.1
+dns-nameservers 8.8.8.8
+bridge_ports eth0
+bridge_fd 9
+bridge_hello 2
+bridge_maxage 12
+bridge_stp off
+bridge_ports eth0
 
-- Tạo gre0 và set gre0 vào br1:
+auto eth0
+iface eth0 inet manual
+#bridge_ports eth0
+up ip link set dev $IFACE up
+down ip link set dev $IFACE down
 ```
- ovs-vsctl add-port br2 gre0 -- set interface gre0 type=gre options:remote_ip=172.16.69.41
+
+- Tạo gre0 và set gre0 vào br-int:
 ```
+ ovs-vsctl add-port br-int gre0 -- set interface gre0 type=gre options:remote_ip=172.16.69.41
+```
+- Tạo script để cung cấp chuyển đổi card
+```
+#nano /etc/ovs-ifup
+#!/bin/sh
+switch='br-int'
+/sbin/ifconfig $1 0.0.0.0 up
+ovs-vsctl add-port ${switch} $1
+```
+- Cấp quyền cho file:
+```
+chmod +x /etc/ovs-ifup
+```
+
 
 - Tạo máy ảo bằng KVM :( nếu có thể lên tạo bang virtualbox)
 ```
@@ -117,6 +157,16 @@ kvm -m 512 -net nic,macaddr=12:42:52:CC:CC:15 -net tap,script=/etc/ovs-ifup cirr
 ## V. Test kết quả:
 
 - Từ VM1 trên HOST1 -> VM2 trên HOST2
+```
+ping 1.1.1.12
+```
+<img src="">
+- Từ VM1 trên HOST2 -> VM2 trên HOST1
+```
+ping 1.1.1.11
+```
+<img src="">
+
  
 
 
