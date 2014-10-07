@@ -160,12 +160,16 @@ kvm -m 512 -net nic,macaddr=12:42:52:CC:CC:15 -net tap,script=/etc/ovs-ifup cirr
 ```
 ping 1.1.1.12
 ```
-<img src="">
+<img src="http://i.imgur.com/WllBkFQ.png">
 - Từ VM1 trên HOST2 -> VM2 trên HOST1
 ```
 ping 1.1.1.11
 ```
-<img src="">
+<img src="http://i.imgur.com/sGlY9c9.png" >
+
+- dùng tcpdump để giám sát:
+
+<img src="http://i.imgur.com/k1zCBHH.png" >
 
  
 
