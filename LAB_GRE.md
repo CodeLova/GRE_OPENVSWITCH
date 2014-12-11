@@ -7,10 +7,7 @@ LAB GRE OPENVSWITCH
 
 ## II.Mô hình thực hiện :
 
-<img src="">
-
-
-## III. Kịch bản bài Lab :
+## II. Kịch bản bài Lab :
  
   - Cài đặt Open vSwitch trên máy ảo VMWare Workstation.
   - Cài KVM trên cả hai máy và tạo mỗi máy 1 máy ảo.
@@ -37,16 +34,16 @@ sudo apt-get install -y openvswitch-switch openvswitch-datapath-dkms
 ```
 - Tạo brigre br0,br1
 ```
-sudo ovs-vsctl add-br br-ex
-sudo ovs-vsctl add-br br-ex
+sudo ovs-vsctl add-br br0
+sudo ovs-vsctl add-br br1
 
 ```
-Thêm port eth0 vào br-ex
+Thêm port eth0 vào br0
 ```
-ovs-vsctl add-port br-ex eth0
+ovs-vsctl add-port br0 eth0
 ```
 
-- set ip cho br-ex :
+- set ip cho br0 :
 ```
 iconfig eth0 0
 ifconfig br0 172.16.69.40 netmask 255.255.255.0
@@ -59,8 +56,8 @@ iconfig br1 1.1.1.1 netmask 255.255.255.0
 ```
 - hoặc chỉnh file cấu hình /etc/network/interface 
 ```
-auto br-ex
-iface br-ex inet static
+auto br0
+iface br0 inet static
 address 10.145.48.159
 netmask 255.255.255.0
 gateway 10.145.48.1
